@@ -1,5 +1,5 @@
 pipeline {
-  agent {label 'python'}
+  agent { label 'python' }
   options {
     timestamps()
     timeout(time: 5, unit: 'MINUTES')
@@ -16,6 +16,11 @@ pipeline {
     stage('Info') {
       steps {
         sh 'echo "Build ${BUILD_NUMBER} de ${APP_NAME} sur ${NODE_NAME}" && git log -1 --oneline'
+      }
+    }
+    stage('Lint shell') {
+      steps {
+        sh 'shellcheck scripts/check.sh'
       }
     }
     stage('Test script') {
