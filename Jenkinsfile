@@ -23,9 +23,19 @@ pipeline {
         sh 'shellcheck scripts/check.sh'
       }
     }
+    stage('Lint Python') {
+      steps {
+        sh 'flake8 scripts/hello.py'
+      }
+    }
     stage('Test script') {
       steps {
         sh 'chmod +x scripts/check.sh && ./scripts/check.sh "${TARGET}"'
+      }
+    }
+    stage('Run Python') {
+      steps {
+        sh 'python3 scripts/hello.py "${TARGET}"'
       }
     }
     stage('Outils disponibles') {
