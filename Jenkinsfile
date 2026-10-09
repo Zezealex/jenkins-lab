@@ -18,6 +18,11 @@ pipeline {
         sh 'echo "Build ${BUILD_NUMBER} de ${APP_NAME} sur ${NODE_NAME}" && git log -1 --oneline'
       }
     }
+    stage('Secrets scan') {
+      steps {
+        sh 'gitleaks git --no-banner --redact -v .'
+      }
+    }
     stage('Lint shell') {
       steps {
         sh 'shellcheck scripts/check.sh'
