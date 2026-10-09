@@ -1,8 +1,10 @@
 import sys
+import os
 
 
 def greet(name):
-    return f"Bonjour {name}"
+    greeting="Bonjour " + name
+    return greeting
 
 
 if __name__ == "__main__":
