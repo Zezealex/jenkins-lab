@@ -2,7 +2,7 @@ import sys
 
 
 def greet(name):
-    greeting="Bonjour " + name
+    greeting = "Bonjour " + name
     return greeting
 
 
