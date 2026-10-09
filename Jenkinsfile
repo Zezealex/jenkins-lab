@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent {label 'python'}
   options {
     timestamps()
     timeout(time: 5, unit: 'MINUTES')
